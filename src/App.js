@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './css/pure-min.css';
 import './css/side-menu.css';
+import { Link } from 'react-router-dom';
 import { AutorBox } from './componentes/Autor/AutorBox';
+import { LivroBox } from './componentes/Livro/LivroBox';
+import { Home } from './componentes/Home';
+import { Route } from 'react-router-dom';
 
 export default class App extends Component {
 
@@ -17,18 +21,17 @@ export default class App extends Component {
                         <a className="pure-menu-heading" href="#">Company</a>
 
                         <ul className="pure-menu-list">
-                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Home</a></li>
-                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Autor</a></li>
-                            <li className="pure-menu-item"><a href="#" className="pure-menu-link">Livro</a></li>
+                            <li className="pure-menu-item"><Link to="/" className="pure-menu-link">Home</Link></li>
+                            <li className="pure-menu-item"><Link to="/autor" className="pure-menu-link">Autor</Link></li>
+                            <li className="pure-menu-item"><Link to="/livro" className="pure-menu-link">Livro</Link></li>
                         </ul>
                     </div>
                 </div>
 
                 <div id="main">
-                    <div className="header">
-                        <h1>Cadastro de Autores</h1>
-                    </div>
-                    <AutorBox />
+                    <Route exact path="/" component={Home} />
+                    <Route path="/autor" component={AutorBox} />
+                    <Route path="/livro" component={LivroBox} />
                 </div>
             </div>
         );
